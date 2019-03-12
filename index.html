@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=ZCOOL+QingKe+HuangYou" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -13,68 +14,65 @@
     <script src="assets/javascript/app.js"></script>
     <title>Trivia Game - Movies!</title>
 </head>
+
+
 <body>
 
-<div class="container">
-    <div class="title"><h1>MOVIE TRIVIA NIGHT!</h1></div>
-    <div class = "container fluid">
-<div><p id="timeleft"></p>
-                
-        <h2 id="q"></h2>
+<div class="container container-fluid">
+    
+<div class="title"><h1>~ MOVIE TRIVIA NIGHT! ~</h1>
+
+
+<button id="startbutton">START</button>
+
+
+<div><p id="timeleft"></p></div>
 
 
 <form style="display: none">
         <p id="question1"></p>
-    <div class="radiochoices custom-control custom-radio custom-control-inline" id="choice1">
-    </div>
-</form>
-      
+    <div class="radiochoices custom-control custom-radio custom-control-inline" id="choice1"></div>
+    <br>
+    <br>
 
-<form style="display: none">
-        <p id="question2"></p>
-    <div class="radiochoices custom-control custom-radio custom-control-inline" id="choice2">
-    </div>
-</form>
+    <p id="question2"></p>
+    <div class="radiochoices custom-control custom-radio custom-control-inline" id="choice2"></div>
+    <br>
+    <br>
 
-
-<form style="display: none">
         <p id="question3"></p>
-    <div class="radiochoices custom-control custom-radio custom-control-inline" id="choice3">
-    </div>
-</form>
+    <div class="radiochoices custom-control custom-radio custom-control-inline" id="choice3"></div>
+    <br>
+    <br>
 
-
-<form style="display: none">
         <p id="question4"></p>
-    <div class="radiochoices custom-control custom-radio custom-control-inline" id="choice4">
-    </div>
-</form>
+    <div class="radiochoices custom-control custom-radio custom-control-inline" id="choice4"></div>
+    <br>
+    <br>
 
 
-<form style="display: none">
         <p id="question5"></p>
-    <div class="radiochoices custom-control custom-radio custom-control-inline" id="choice5">
-    </div>
-</form>
+    <div class="radiochoices custom-control custom-radio custom-control-inline" id="choice5"></div>
+    <br>
+    <br>
 
-
-<form style="display: none">
         <p id="question6"></p>
-    <div class="radiochoices custom-control custom-radio custom-control-inline" id="choice6">
-    </div>
+    <div class="radiochoices custom-control custom-radio custom-control-inline" id="choice6"></div>
+    <br>
+    <br>
+
+    <input id="sub" type="submit" value="SUBMIT">
 </form>
+        <p id="results">
+        <p id="correct"></p>  
+        <p id="incorrect"></p>
+        <p id="unanswered"></p>
 
-
+        <button id="reset" style="display:none">TRY AGAIN?</button>
+    </div>
+    
 </div>
 
-
-
-    <p id="correct"></p>  
-    <p id="incorrect"></p>
-    <p id="unanswered"></p>
-
-    <button id="startbutton">START</button>
-    </div>
-        </div>
+    
 </body>
 </html>

@@ -1,27 +1,66 @@
-/* html body {
+html body {
 background-image: url('../images/background.jpg');
 background-repeat: no-repeat;
 background-size: cover;
-} */
+}
 
-.maincontent {
-    margin: auto;
+.container {
+    margin-left: 30px;
+    margin-right: 30px;
     margin-top: 30px;
-    background: white;
-    height: 350px;
-    width: 600px;
+    background: rgba(255, 255, 255, 0.7); 
+    padding: 10px;
+}
+
+.container-fluid {
+    width: 70%;
+    margin: 70px auto;
+    min-height: 400px;
 }
 
 .title {
-    margin-left: 450px;
-    margin-top: 60px;
-    color: white;
+    text-align: center;
+    color: black;
+    font-family: 'ZCOOL QingKe HuangYou', cursive;
+}
+
+#startbutton {
+    text-align: center;
 }
 
 .timeleft {
-    font-size: 20px;
+    font-size: 25px;
+}
+ h2 {
+    font-family: 'ZCOOL QingKe HuangYou', cursive;
+ }
+p {
+    font-size: 25px;
+    font-family: 'ZCOOL QingKe HuangYou', cursive;
 }
 
-p {
+.radiochoices {
+    margin: auto;
+}
+
+#results {
+    text-align: center;
+    font-size: 30px;
+    font-family: 'ZCOOL QingKe HuangYou', cursive;
+}
+
+.results {
+   text-align: center;
+   margin-top: 60px;
+}
+
+#correct, #incorrect, #unanswered {
+ text-align: center;
+}
+
+button {
+    margin: auto;
+    margin-top: 50px;
     font-size: 20px;
+    border-radius: 6px;
 }
