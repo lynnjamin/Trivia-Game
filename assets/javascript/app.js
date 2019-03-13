@@ -1,5 +1,5 @@
 //create variables for gloabl 
-var time = 20;
+var time = 30;
 var intervalId;
 var clockRunning = false;
 var correct = 0;
@@ -134,7 +134,7 @@ $(document).ready(function () {
         correct = 0;
         incorrect = 0;
         unanswered = 0;
-        time = 20;
+        time = 30;
         start();
     });
 
