@@ -1,10 +1,11 @@
-//create variables 
-var time = 10;
+//create variables for gloabl 
+var time = 20;
 var intervalId;
+var clockRunning = false;
 var correct = 0;
 var incorrect = 0;
 var unanswered = 0;
-var userAnswer=[];
+var userAnswer = [];
 var questions = [
     {
         q: "1. What superhero team did Deadpool create in Deadpool 2?",
@@ -38,70 +39,107 @@ var questions = [
     },
 ];
 
-    //function to reveal questions and store in variable
-    var listQuestions = function () {
-        for (var i = 0; i < questions.length; i++) {
+//display function to call on start function
+var listQuestions = function () {
+    for (var i = 0; i < questions.length; i++) {
+        var num = i + 1;
+        $("#choice" + num).empty();
+    }
+    for (var i = 0; i < questions.length; i++) {
         $("#question" + (i + 1)).html("<p>" + questions[i].q + "</p>");
 
         //dynamically added radio buttons with appropriate values
-            $.each(questions[i].c, function (index, value) {
-            var num = i + 1
+        $.each(questions[i].c, function (index, value) {
+            var num = i + 1;
             $("#choice" + num).append("<input type='radio' name=" + i + " value=" + value + ">" + value);
-            });
-        }   
+        });
     }
+}
 
 $(document).ready(function () {
-    //reveal questions and choices and hides start button//
+    
     function start() {
         //start timer
-        intervalId = setInterval(decrement, 1000);
-        $("#startbutton").remove();
+        if (!clockRunning) {
+            intervalId = setInterval(decrement, 1000);
+            clockRunning = true;
+        }
+        $("#startbutton").hide();
         $("form").show();
         listQuestions();
     }
 
-    //stop function
+    //this function is just for stopping the time
     function stop() {
         clearInterval(intervalId);
+        clockRunning = false;
     }
-    
-    //function to start clock   
+
+    //function to start clock and runs the same as submit button to end and calculate score
     function decrement() {
         time--;
         $("#timeleft").text("Time left: " + time)
         if (time === 0) {
             stop();
+            userAnswer = []; //create array to create conditions for correct choices
+            for (var i = 0; i < questions.length; i++) {
+                userAnswer.push($(":checked").eq(i).val());
+                if ($(":checked").eq(i).val() == questions[i].a) {
+                    correct++;
+                } else if ($(":checked").eq(i).val() == undefined) {
+                    unanswered++;
+                } else {
+                    incorrect++;
+                }
+            }
+            $("#endresults").show();
             endGame();
         }
     }
 
+    //result page shown with scores
     function endGame() {
-        $("#timeleft").remove();
-        $("form").remove();
-        $("#sub").remove();
+        stop();
+        $("form").hide();
+        $("#endresults").show();
         $("#correct").text("Correct: " + correct);
         $("#incorrect").text("Incorrect: " + incorrect);
+        $("#unanswered").text("Unanswered questions: " + unanswered);
         $("#results").text("Cool! Here is your final score!");
         $("#reset").show();
     }
-    //submit button and count scores
-    $("#sub").on("click", function(event) {
+
+    //submit button and count scores, same as function decrement
+    $("#sub").on("click", function (event) {
         event.preventDefault();
-        userAnswer=[]; //create array to create conditions for correct choices
-        for(var i = 0; i < 6; i++) {
-        userAnswer.push($(":checked").eq(i).val());
-            if($(":checked").eq(i).val()== questions[i].a) {
+        userAnswer = []; //create array to create conditions for correct choices
+        for (var i = 0; i < questions.length; i++) {
+            userAnswer.push($(":checked").eq(i).val());
+            if ($(":checked").eq(i).val() == questions[i].a) {
                 correct++;
-            } else if ($(":checked").eq(i).val()!== questions[i].a) {
+            } else if ($(":checked").eq(i).val() == undefined) {
+                unanswered++;
+            } else {
                 incorrect++;
+            }
         }
-        
- endGame();
+        $("#endresults").show();
+        endGame();
     });
 
-    //event function keys//
+    //reset function, reset all variables back to starting
+    $("#reset").on("click", function () {
+        $("#reset").hide();
+        $("#endresults").hide();
+        correct = 0;
+        incorrect = 0;
+        unanswered = 0;
+        time = 20;
+        start();
+    });
+
+    //event funtion to start game
     $("#startbutton").on("click", start);
-    $("#reset").on("click", reset);
+
 
 });
